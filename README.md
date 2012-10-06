@@ -1,7 +1,7 @@
 ## Bi App LESS
 bi-app lets you write your stylesheets once, and have them compiled into 2 different stylesheets one for `left-to-right` layout, and the other for `right-to-left` layouts 
 
-created by [Anas Nakawa](//twitter.com/anasnakawa), inspired by 
+created by [Anas Nakawa](//twitter.com/anasnakawa), & 
 [Victor Zamfir](//twitter.com/victorzamfir)
 
 ## License
@@ -107,7 +107,7 @@ border-left-color(color)
 border-right-color(color)
 border-color(top, right, bottom, left)
 
-// border radius
+// border radius (soon..)
 border-top-left-radius(radius)
 border-top-right-radius(radius)
 border-bottom-left-radius(radius)
