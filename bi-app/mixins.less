@@ -225,3 +225,93 @@
 .border-color(@top, @right, @bottom, @left) when (@bi-app-left = right) {
   border-color: @top @left @bottom @right;
 }
+
+// generic border
+.border-left(@border) when (@bi-app-left = left) {
+  border-left: @border;
+}
+
+.border-left(@border) when (@bi-app-left = right) {
+  border-right: @border;
+}
+
+.border-right(@border) when (@bi-app-right = right) {
+  border-right: @border;
+}
+
+.border-right(@border) when (@bi-app-right = left) {
+  border-left: @border;
+}
+
+// radius
+.border-top-left-radius(@radius) when (@bi-app-left = left) {
+  -webkit-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+}
+
+.border-top-left-radius(@radius) when (@bi-app-left = right) {
+  -webkit-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+}
+
+.border-top-right-radius(@radius) when (@bi-app-right = right) {
+  -webkit-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+}
+
+.border-top-right-radius(@radius) when (@bi-app-right = left) {
+  -webkit-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+}
+
+.border-bottom-left-radius(@radius) when (@bi-app-left = left) {
+  -webkit-border-bottom-left-radius: @radius;
+          border-bottom-left-radius: @radius;
+}
+
+.border-bottom-left-radius(@radius) when (@bi-app-left = right) {
+  -webkit-border-bottom-right-radius: @radius;
+          border-bottom-right-radius: @radius;
+}
+
+.border-bottom-right-radius(@radius) when (@bi-app-right = right) {
+  -webkit-border-bottom-right-radius: @radius;
+          border-bottom-right-radius: @radius;
+}
+
+.border-bottom-right-radius(@radius) when (@bi-app-right = left) {
+  -webkit-border-bottom-left-radius: @radius;
+          border-bottom-left-radius: @radius;
+}
+
+.border-right-radius(@radius) {
+  .border-top-right-radius(@radius);
+  .border-bottom-right-radius(@radius);
+}
+
+.border-left-radius(@radius) {
+  .border-top-left-radius(@radius);
+  .border-bottom-left-radius(@radius);
+}
+
+.border-top-radius(@radius) {
+  .border-top-left-radius(@radius);
+  .border-top-right-radius(@radius);
+}
+
+.border-bottom-radius(@radius) {
+  .border-bottom-left-radius(@radius);
+  .border-bottom-right-radius(@radius);
+}
+
+.border-radius(@topLeft, @topRight: null, @bottomRight: null, @bottomLeft: null) when (@topRight = null) {
+  -webkit-border-radius: @topLeft;
+          border-radius: @topLeft;
+}
+
+.border-radius(@topLeft, @topRight: null, @bottomRight: null, @bottomLeft: null) when not (@topRight = null) {
+  .border-top-left-radius(@topLeft);
+  .border-top-right-radius(@topRight);
+  .border-bottom-right-radius(@bottomRight);
+  .border-bottom-left-radius(@bottomLeft);
+}

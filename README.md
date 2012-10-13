@@ -17,7 +17,7 @@ create three less files
 ```js
 app-ltr.less    // ltr interface to be compiled
 app-rtl.less    // rtl interface
-_app.less       // private file where you will write your styles (don't compile this one)
+app.less        // private file where you will write your styles (don't compile this one)
 ```
 in the `app-ltr.less` only include the following
 ```css
@@ -63,7 +63,7 @@ in `app-rtl.css`
 }
 ```
 
-## Available mixixn for CSS properties
+## Available mixins for CSS properties
 ```js
 // padding
 padding-left(distance)
