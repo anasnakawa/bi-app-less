@@ -6,7 +6,7 @@
     <title>Bi-App-LESS by anasnakawa</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="stylesheets/google-code-pretify/sons-of-obsidian.css">
+    <link rel="stylesheet" href="stylesheets/prettify.css">
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -66,43 +66,39 @@
 		<p>
 			create three less files
 		</p>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 app-ltr.less    // ltr interface to be compiled
 app-rtl.less    // rtl interface
-app.less        // private file where you will write your styles (don't compile this one)
-			</pre>
+app.less        // private file where you will write your styles (don't compile this one)</pre>
 		</div>
 		<p>
 			in the <code>app-ltr.less</code> only include the following
 		</p>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 @import 'bi-app-ltr';
-@import 'app';
-			</pre>
+@import 'app';</pre>
 		</div>
 		<p>
 			same for <code>app-rtl.less</code>
 		</p>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 @import 'bi-app-rtl';
-@import 'app';
-			</pre>
+@import 'app';</pre>
 		</div>
 		<p>
 			now you can write your styles in <code>_app.less</code>, using bi-app mixins, as you were styling for only <code>ltr</code> layouts, and the <code>rtl</code> styles will be compiled automatically!
 		</p>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 .foo {
   display: block;
   .float(left);
   .border-left(1px solid white);
   ...
-}
-			</pre>
+}</pre>
 		</div>
 		<p>
 			the result will be ..
@@ -110,32 +106,30 @@ app.less        // private file where you will write your styles (don't compile 
 		<p>
 			in <code>app-ltr.css</code>
 		</p>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 .foo {
   display: block;
   float: left;
   border-left: 1px solid white;
   ...
-}
-			</pre>
+}</pre>
 		</div>
 		<p>
 			in <code>app-rtl.css</code>
 		</p>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 .foo {
   display: block;
   float: right;
   border-right: 1px solid white;
   ...
-}
-			</pre>
+}</pre>
 		</div>
 		<h2>
 		<a name="available-mixins-for-css-properties" class="anchor" href="#available-mixins-for-css-properties"><span class="mini-icon mini-icon-link"></span></a>Reference</h2>
-		<div class="highlight">
+		<div>
 			<pre class="prettyprint">
 // padding
 padding-left(distance)
@@ -188,8 +182,7 @@ border-left-radius(radius)
 border-right-radius(radius)
 border-top-radius(radius)
 border-bottom-radius(radius)
-border-radius(topLeft, topRight, bottomRight, bottomLeft)
-			</pre>
+border-radius(topLeft, topRight, bottomRight, bottomLeft)</pre>
 		</div>
 		
       </section>
