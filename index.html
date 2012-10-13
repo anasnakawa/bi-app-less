@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Bi-app-less by anasnakawa</title>
+    <title>Bi-App-LESS by anasnakawa</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
+    <link rel="stylesheet" href="stylesheets/google-code-pretify/sons-of-obsidian.css">
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,14 +16,14 @@
   <body>
 
       <header>
-        <h1>Bi-app-less</h1>
+        <h1>Bi-App-LESS</h1>
         <p>writing bi-directional stylesheets in less</p>
       </header>
 
       <div id="banner">
         <span id="logo"></span>
 
-        <a href="https://github.com/anasnakawa/bi-app-less" class="button fork"><strong>View On GitHub</strong></a>
+        <a href="https://github.com/anasnakawa/bi-app-less" class="button fork"><strong>Fork me on GitHub</strong></a>
         <div class="downloads">
           <span>Downloads:</span>
           <ul>
@@ -39,38 +38,171 @@
         <ul></ul>
       </nav>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+		
+		<h2>
+		<a name="bi-app-less" class="anchor" href="#bi-app-less"><span class="mini-icon mini-icon-link"></span></a>Bi App LESS</h2>
+		<p>
+			bi-app lets you write your stylesheets once, and have them compiled into 2 different stylesheets one for <code>left-to-right</code> layout, and the other for <code>right-to-left</code> layouts
+		</p>
+		<p>
+			created by <a href="//twitter.com/anasnakawa">Anas Nakawa</a>, <br /> 
+			inspired by <a href="//twitter.com/victorzamfir">Victor Zamfir</a>
+		</p>
+		<h2>
+		<a name="license" class="anchor" href="#license"><span class="mini-icon mini-icon-link"></span></a>License</h2>
+		<p>
+			<a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>
+		</p>
+		<h2>
+		<a name="why" class="anchor" href="#why"><span class="mini-icon mini-icon-link"></span></a>Why</h2>
+		<p>
+			usually when writing stylesheets for bi-directional sites/apps, both <code>ltr</code> &amp; <code>rtl</code> stylesheets mostly will look the same, except for direction related properties (<code>float, text-align, padding, margin ..etc</code> ), so when you write a <code>float: left</code> in some <code>ltr</code> stylesheet, you'll have to write it again as <code>float: right</code> for the <code>rtl</code> one
+		</p>
+		<p>
+			when using <strong>bi-app-less</strong> , all you have to do is to write your stylesheets once using a predefined mixins for those direction related properties, and once you compile your stylesheets, you'll have a ready
+		</p>
+		<h2>
+		<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="mini-icon mini-icon-link"></span></a>How to use it</h2>
+		<p>
+			create three less files
+		</p>
+		<div class="highlight">
+			<pre class="prettyprint">
+app-ltr.less    // ltr interface to be compiled
+app-rtl.less    // rtl interface
+app.less        // private file where you will write your styles (don't compile this one)
+			</pre>
+		</div>
+		<p>
+			in the <code>app-ltr.less</code> only include the following
+		</p>
+		<div class="highlight">
+			<pre class="prettyprint">
+@import 'bi-app-ltr';
+@import 'app';
+			</pre>
+		</div>
+		<p>
+			same for <code>app-rtl.less</code>
+		</p>
+		<div class="highlight">
+			<pre class="prettyprint">
+@import 'bi-app-rtl';
+@import 'app';
+			</pre>
+		</div>
+		<p>
+			now you can write your styles in <code>_app.less</code>, using bi-app mixins, as you were styling for only <code>ltr</code> layouts, and the <code>rtl</code> styles will be compiled automatically!
+		</p>
+		<div class="highlight">
+			<pre class="prettyprint">
+.foo {
+  display: block;
+  .float(left);
+  .border-left(1px solid white);
+  ...
+}
+			</pre>
+		</div>
+		<p>
+			the result will be ..
+		</p>
+		<p>
+			in <code>app-ltr.css</code>
+		</p>
+		<div class="highlight">
+			<pre class="prettyprint">
+.foo {
+  display: block;
+  float: left;
+  border-left: 1px solid white;
+  ...
+}
+			</pre>
+		</div>
+		<p>
+			in <code>app-rtl.css</code>
+		</p>
+		<div class="highlight">
+			<pre class="prettyprint">
+.foo {
+  display: block;
+  float: right;
+  border-right: 1px solid white;
+  ...
+}
+			</pre>
+		</div>
+		<h2>
+		<a name="available-mixins-for-css-properties" class="anchor" href="#available-mixins-for-css-properties"><span class="mini-icon mini-icon-link"></span></a>Reference</h2>
+		<div class="highlight">
+			<pre class="prettyprint">
+// padding
+padding-left(distance)
+padding-right(distance)
+padding(top, right, bottom, left)
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+// margin
+margin-left(distance)
+margin-right(distance)
+margin(top, right, bottom, left)
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+// float
+float(direction)            // left || right || none
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+// text align
+text-align(direction)       // left || right || center
 
-<h3>Designer Templates</h3>
+// clear
+clear(direction)            // left || right || both
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+// left / right
+left(distance)
+right(distance)
 
-<h3>Rather Drive Stick?</h3>
+// border
+border-left(border-style)
+border-right(border-style)
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+// border width
+border-left-width(width)
+border-right-width(width)
+border-width(top, right, bottom, left)
 
-<h3>Authors and Contributors</h3>
+// border style
+border-left-style(style)
+border-right-style(style)
+border-style(top, right, bottom, left)
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+// border color
+border-left-color(color)
+border-right-color(color)
+border-color(top, right, bottom, left)
 
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+// border radius (soon..)
+border-top-left-radius(radius)
+border-top-right-radius(radius)
+border-bottom-left-radius(radius)
+border-bottom-right-radius(radius)
+border-left-radius(radius)
+border-right-radius(radius)
+border-top-radius(radius)
+border-bottom-radius(radius)
+border-radius(topLeft, topRight, bottomRight, bottomLeft)
+			</pre>
+		</div>
+		
       </section>
       <footer>
-        <p>Project maintained by <a href="https://github.com/anasnakawa">anasnakawa</a></p>
+        <p>Project maintained by <a href="https://github.com/anasnakawa">anasnakawa</a>
+        <br />follow me on <a href="https://twitter.com/anasnakawa">twitter</a>	
+        </p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/prettify.js"></script>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
