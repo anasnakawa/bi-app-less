@@ -23,6 +23,7 @@
 //  - color
 //  - generic
 //  - radius
+// box-shadow
 // ------------------------------------------
 
 // padding
@@ -41,6 +42,14 @@
 
 .padding-right(@distance) when (@bi-app-right = left) {
   padding-left: @distance;
+}
+
+.padding(@allFour) {
+    padding: @allFour;
+}
+
+.padding(@topBottom, @rightLeft) {
+    padding: @topBottom @rightLeft;
 }
 
 .padding(@top, @right, @bottom, @left) when (@bi-app-left = left) {
@@ -69,6 +78,14 @@
   margin-left: @distance;
 }
 
+.margin(@allFour) {
+    margin: @allFour;
+}
+
+.margin(@topBottom, @rightLeft) {
+    margin: @topBottom @rightLeft;
+}
+
 .margin(@top, @right, @bottom, @left) when (@bi-app-left = left) {
   margin: @top @right @bottom @left;
 }
@@ -95,6 +112,10 @@
   .bi-app-float-right;
 }
 
+.float(@direction) when (@direction = none) {
+    float: none;
+}
+
 // text-align
 // ------------------------------------------
 .bi-app-text-align-left() {
@@ -113,6 +134,14 @@
   .bi-app-text-align-right;
 }
 
+.text-align(@direction) when (@direction = center) {
+    text-align: center;
+}
+
+.text-align(@direction) when (@direction = justify) {
+    text-align: justify;
+}
+
 // clear
 // ------------------------------------------
 .bi-app-clear-left() {
@@ -129,6 +158,10 @@
 
 .clear(@direction) when (@direction = right) {
   .bi-app-clear-right;
+}
+
+.clear(@direction) when (@direction = both) {
+    clear: both;
 }
 
 // left / right
@@ -315,4 +348,18 @@
   .border-top-right-radius(@topRight);
   .border-bottom-right-radius(@bottomRight);
   .border-bottom-left-radius(@bottomLeft);
+}
+
+// box-shadow
+// ------------------------------------------
+.box-shadow(@hShadow, @rest...) when (@bi-app-left = left) {
+    -webkit-box-shadow: @hShadow @rest;
+    -moz-box-shadow: @hShadow @rest;
+    box-shadow: @hShadow @rest;
+}
+
+.box-shadow(@hShadow, @rest...) when (@bi-app-left = right) {
+    -webkit-box-shadow: -@hShadow @rest;
+    -moz-box-shadow: -@hShadow @rest;
+    box-shadow: -@hShadow @rest;
 }
