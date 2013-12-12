@@ -352,13 +352,13 @@
 
 // box-shadow
 // ------------------------------------------
-.box-shadow(@hShadow, @rest...) when (@bi-app-left = left) {
+.box-shadow(@hShadow, @rest...) when (@bi-app-left = left) and (isnumber(@hShadow)) {
     -webkit-box-shadow: @hShadow @rest;
     -moz-box-shadow: @hShadow @rest;
     box-shadow: @hShadow @rest;
 }
 
-.box-shadow(@hShadow, @rest...) when (@bi-app-left = right) {
+.box-shadow(@hShadow, @rest...) when (@bi-app-left = right) and (isnumber(@hShadow)) {
     -webkit-box-shadow: -@hShadow @rest;
     -moz-box-shadow: -@hShadow @rest;
     box-shadow: -@hShadow @rest;
