@@ -63,6 +63,10 @@ in `app-rtl.css`
   ...
 }
 ```
+## Installing via npm
+```
+npm install bi-app-less
+```
 
 ## Installing via Bower
 ```
