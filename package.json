@@ -1,0 +1,27 @@
+{
+  "name": "bi-app-less",
+  "version": "1.0.0",
+  "description": "writing bi-directional stylesheets in less",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anasnakawa/bi-app-less.git"
+  },
+  "keywords": [
+    "bidi",
+    "less",
+    "css",
+    "lrt",
+    "rtl",
+    "bi-directional"
+  ],
+  "author": "Anas Nakawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anasnakawa/bi-app-less/issues"
+  },
+  "homepage": "https://github.com/anasnakawa/bi-app-less"
+}
